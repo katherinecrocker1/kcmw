@@ -6,7 +6,8 @@
   <meta name="description" content="KC Media Works is Katherine Crocker’s front-end development and UI/UX design portfolio.">
   <title>Front-End Web Development and UI/UX Design | KC Media Works</title>
   <link rel="icon" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css?v=glass-grid">
+  <link rel="stylesheet" href="/assets/home.css?v=linen-overview">
   
 </head>
 <body class="home">
@@ -16,24 +17,14 @@
       <a href="/" aria-label="KC Media Works home"><img class="brand" src="/assets/logo-white.png" alt=""></a>
       <nav aria-label="Main navigation">
         <a href="/" aria-current="page">Home</a>
-<a href="/featured-work/">Portfolio</a>
-<a href="/#about">About</a>
-        <details class="subnav">
-          <summary aria-label="About sections">▾</summary>
-          <div>
-            <a href="/#availability-section">Ways to Work Together</a>
-            <a href="/#skills">Skills</a>
-            <a href="/#services">Services</a>
-            <a href="/#contact">Contact</a>
-          </div>
-        </details>
+        <a href="/featured-work/">Portfolio</a>
       </nav>
     </div>
   </header>
   <main id="main">
     <section class="home-hero">
-      <div class="container">
-        <h1>KC Media Works</h1>
+      <div class="container home-hero-inner">
+        <h1>KC <em>Media Works</em></h1>
         <p>Front-End Web Development &amp; UI/UX Design</p>
         <a href="/featured-work/" class="button button-light">View Portfolio</a>
       </div>
@@ -57,11 +48,14 @@
       </article>
     </section>
 
-    <section class="container section overview" id="about">
-      <div>
-        <p class="eyebrow">Overview</p>
-        <h2>Who We Are</h2>
-        <p>Experienced front-end web developer and UI/UX designer providing innovative design and development solutions for diverse clients through KC Media Works LLC, delivering intuitive digital experiences. Skilled in building, testing, and deploying applications. Proficient in client business processes, strategy, and implementing new technologies.</p>
+    <section class="section overview" id="about">
+      <div class="container overview-layout">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2>About KC Media Works</h2>
+          <p>Experienced front-end web developer and UI/UX designer providing innovative design and development solutions for diverse clients through KC Media Works LLC, delivering intuitive digital experiences. Skilled in building, testing, and deploying applications. Proficient in client business processes, strategy, and implementing new technologies.</p>
+        </div>
+        <a class="button resume-link" href="/assets/katherine-crocker-resume.pdf">View Résumé (PDF)</a>
       </div>
     </section>
 
@@ -79,27 +73,13 @@
       </div>
     </section>
 
-    <section class="section tinted" id="availability-section">
-      <div class="container">
-        <h2>Ways to Work Together</h2>
-        <div class="two-col">
-          <article class="panel">
-            <h3>Locations</h3>
-            <p>Based in Georgia, USA. Open to remote work and travel.</p>
-          </article>
-          <article class="panel">
-            <h3>Availability</h3>
-            <p>Contract and part-time work</p>
-          </article>
-        </div>
+    <section class="container section expertise" id="skills">
+      <div class="section-intro">
+        <p class="eyebrow">Expertise</p>
+        <h2>Specialized Skills</h2>
+        <p class="lede">Experience includes building, testing, and deploying web applications, designing interfaces, and managing client projects.</p>
       </div>
-    </section>
-
-    <section class="container section" id="skills">
-      <p class="eyebrow">Expertise</p>
-      <h2>Specialized Skills</h2>
-      <p class="lede">My experience spans building, testing, and deploying web applications, designing interfaces, and managing projects for clients.</p>
-      <div class="two-col">
+      <div class="skills-directory">
         <article class="panel">
           <h3>Development &amp; Design</h3>
           <p>JavaScript, React.js, Ruby on Rails, Bootstrap, Heroku, Visual Studio Code, Xcode, GitHub, Azure DevOps, Lucid, Cloudflare, SwiftUI, Figma, HTML/CSS, WordPress, Elementor</p>
@@ -112,28 +92,34 @@
     </section>
 
 
-    <section class="container section" id="services">
-      <p class="eyebrow">Services</p>
-      <h2>Why Choose Us</h2>
-      <p class="lede">I design and build websites around what people need to do, with mobile responsiveness in mind from the start.</p>
-      <div class="two-col">
-        <article class="panel"><h3>Front-End Development</h3><p>Build responsive, scalable websites.</p></article>
-        <article class="panel"><h3>Project Management</h3><p>Lead digital projects from planning through delivery.</p></article>
-        <article class="panel"><h3>UI/UX Design</h3><p>Design clear, usable interfaces across devices.</p></article>
-        <article class="panel"><h3>Consulting</h3><p>Assess website performance, user engagement, and digital strategy.</p></article>
+    <section class="section services" id="services">
+      <div class="container services-layout">
+        <div class="section-intro">
+          <p class="eyebrow">Services</p>
+          <h2>Why KC Media Works</h2>
+          <p class="lede">KC Media Works designs and builds websites around what people need to do, with mobile responsiveness in mind from the start.</p>
+          <a class="button" href="/featured-work/">View Portfolio</a>
+        </div>
+        <div class="service-list">
+          <article><h3>Front-End Development</h3><p>Build responsive, scalable websites.</p></article>
+          <article><h3>Project Management</h3><p>Lead digital projects from planning through delivery.</p></article>
+          <article><h3>UI/UX Design</h3><p>Design clear, usable interfaces across devices.</p></article>
+          <article><h3>Consulting</h3><p>Assess website performance, user engagement, and digital strategy.</p></article>
+        </div>
       </div>
-      <a class="button" href="/featured-work/">View Portfolio</a>
     </section>
 
-    <section class="section tinted">
+    <section class="section education-section">
       <div class="container">
-        <h2>Education</h2>
-        <p>University of Georgia</p>
-        <div class="education">
-          <article><h3>Master of Arts</h3><p>Emerging Media</p><time datetime="2023-05">May 2023</time></article>
-          <article><h3>Bachelor of Arts</h3><p>Broadcast Journalism</p><time datetime="2021-12">December 2021</time></article>
-          <article><h3>Certificate</h3><p>New Media</p><time datetime="2021-12">December 2021</time></article>
-          <article><h3>Minor</h3><p>Fashion Merchandising</p><time datetime="2019-05">May 2019</time></article>
+        <div class="section-intro">
+          <h2>Education</h2>
+          <p>University of Georgia</p>
+        </div>
+        <div class="education-timeline">
+          <article><time datetime="2023-05">May 2023</time><h3>Master of Arts</h3><p>Emerging Media</p></article>
+          <article><time datetime="2021-12">December 2021</time><h3>Bachelor of Arts</h3><p>Broadcast Journalism</p></article>
+          <article><time datetime="2021-12">December 2021</time><h3>Certificate</h3><p>New Media</p></article>
+          <article><time datetime="2019-05">May 2019</time><h3>Minor</h3><p>Fashion Merchandising</p></article>
         </div>
       </div>
     </section>
@@ -145,7 +131,7 @@
           <p>For any inquiries, please email<br>
           <a href="mailto:Katherine.KCMediaWorks@gmail.com">Katherine.KCMediaWorks@gmail.com</a>.</p>
         </div>
-        <a class="button button-light" href="mailto:Katherine.KCMediaWorks@gmail.com">Contact Us</a>
+        <a class="button button-light" href="mailto:Katherine.KCMediaWorks@gmail.com">Contact</a>
       </div>
     </section>
   </main>

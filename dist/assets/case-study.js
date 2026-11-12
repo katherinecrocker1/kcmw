@@ -12,13 +12,14 @@ for (const gallery of document.querySelectorAll('.case-gallery')) {
   const controls = gallery.querySelector('.case-gallery-controls');
   const more = controls.querySelector('.gallery-more');
   const step = () => slides.firstElementChild.getBoundingClientRect().width + 16;
+  const scrollBehavior = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
   controls.hidden = false;
   controls.querySelector('.gallery-prev').addEventListener('click', () => {
-    slides.scrollBy({ left: -step(), behavior: 'smooth' });
+    slides.scrollBy({ left: -step(), behavior: scrollBehavior() });
   });
   controls.querySelector('.gallery-next').addEventListener('click', () => {
-    slides.scrollBy({ left: step(), behavior: 'smooth' });
+    slides.scrollBy({ left: step(), behavior: scrollBehavior() });
   });
   if (more) {
     more.hidden = false;
