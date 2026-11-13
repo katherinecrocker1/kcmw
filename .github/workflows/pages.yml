@@ -1,0 +1,42 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Make site links portable
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          site = Path('dist')
+          for page in site.rglob('*.html'):
+              prefix = '../' * len(page.parent.relative_to(site).parts) or './'
+              html = page.read_text()
+              html = re.sub(r'(\b(?:href|src)="/)(?!/)', lambda match: match[1][:-1] + prefix, html)
+              page.write_text(html)
+          PY
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4
+        id: deployment
