@@ -171,7 +171,6 @@
   margin-top: 1rem;
   color: var(--accent);
 }
-.services-actions .resume-link { font-weight: 650; }
 .services-actions .button { color: inherit; }
 .service-list {
   display: grid;
