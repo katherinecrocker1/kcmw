@@ -232,6 +232,10 @@ section[id] { scroll-margin-top: 1rem; }
   text-wrap: balance;
 }
 .project-card-action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem;
   width: 100%;
   margin-top: auto;
   padding-top: .85rem;
@@ -433,6 +437,18 @@ a.button:is(:hover, :focus-visible), .case-content a.guten-button:is(:hover, :fo
 }
 .portfolio .case-study { --surface: #f8f9fc; }
 .portfolio .case-gallery-controls button:hover { color: white; }
+
+.project-status {
+  display: inline-block;
+  margin-inline-start: .35rem;
+  padding: .1rem .55rem;
+  border-radius: 999px;
+  background: #dcf2e3;
+  color: #215b3a;
+  font-size: .75rem;
+  font-weight: 650;
+  vertical-align: middle;
+}
 
 .project-brand {
   margin: 0 0 1rem;
