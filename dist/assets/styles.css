@@ -827,7 +827,7 @@ a.button:is(:hover, :focus-visible), .case-content a.guten-button:is(:hover, :fo
   border-bottom: 1px solid var(--line);
 }
 
-.redesign-gallery-heading h2 { font-size: clamp(1.45rem, 3.2vw, 2.1rem); }
+.website-redesign > h2 { margin-bottom: .85rem; font-size: clamp(1.45rem, 3.2vw, 2.1rem); }
 
 .redesign-page-picker {
   display: flex;
@@ -860,6 +860,13 @@ a.button:is(:hover, :focus-visible), .case-content a.guten-button:is(:hover, :fo
     background-size: .85rem;
   }
 }
+
+.redesign-comparisons { margin-top: clamp(2rem, 5vw, 3.5rem); }
+.redesign-gallery-heading h3 { font-size: clamp(1.25rem, 2.5vw, 1.65rem); }
+.featured-pages .redesign-card h4 { margin: 0; font-size: clamp(1rem, 2.2vw, 1.3rem); }
+.redesign-versions.featured-page-preview { grid-template-columns: minmax(0, 1fr); }
+.featured-page-preview img { max-height: 34rem; }
+.featured-page-preview figcaption { display: none; }
 
 .redesign-card { margin-top: 1rem; }
 

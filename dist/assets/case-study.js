@@ -113,19 +113,21 @@ for (const gallery of document.querySelectorAll('.case-gallery')) {
 }
 
 for (const gallery of document.querySelectorAll('.website-redesign')) {
-  const pagePicker = gallery.querySelector('.redesign-page-picker');
-  const select = pagePicker.querySelector('select');
-  const pages = gallery.querySelectorAll('.redesign-card');
+  for (const group of gallery.querySelectorAll('[data-gallery-picker]')) {
+    const picker = group.querySelector('.redesign-page-picker');
+    const select = picker.querySelector('select');
+    const pages = group.querySelectorAll('.redesign-card');
 
-  function updateComparison() {
-    for (const page of pages) {
-      page.hidden = page.dataset.page !== select.value;
+    function updateVisiblePage() {
+      for (const page of pages) {
+        page.hidden = page.dataset.page !== select.value;
+      }
     }
-  }
 
-  select.addEventListener('change', updateComparison);
-  updateComparison();
-  pagePicker.hidden = false;
+    select.addEventListener('change', updateVisiblePage);
+    updateVisiblePage();
+    picker.hidden = false;
+  }
 
   const dialog = gallery.querySelector('.redesign-lightbox');
   const preview = dialog.querySelector('img');
@@ -157,6 +159,7 @@ for (const gallery of document.querySelectorAll('.website-redesign')) {
     if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     screenshots = [...link.closest('.redesign-versions').querySelectorAll('figure > a')];
+    previous.hidden = next.hidden = screenshots.length < 2;
     showScreenshot(screenshots.indexOf(link));
     dialog.showModal();
   });
