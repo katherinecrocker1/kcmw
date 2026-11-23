@@ -6,8 +6,8 @@
   <meta name="description" content="Selected design, web development, and media projects by Katherine Crocker.">
   <title>Featured Work | KC Media Works</title>
   <link rel="icon" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=editorial-card-details">
-  <script src="/assets/portfolio.js" defer></script>
+  <link rel="stylesheet" href="/assets/styles.css?v=featured-work-white-logo">
+  <script src="/assets/portfolio.js?v=featured-work-sorting" defer></script>
 </head>
 <body class="portfolio featured-work">
   <a class="skip" href="#main">Skip to content</a>
@@ -26,23 +26,35 @@
     </section>
     <section class="container gallery-section" aria-label="Portfolio projects">
       <div class="filter" hidden>
-        <label for="client-filter">Filter by client</label>
-        <select id="client-filter">
-            <option value="">All projects</option>
-            <option>Sweeney &amp; Sons</option>
-            <option>BCA Studios</option>
-            <option>Joel Osteen Ministries and Lakewood Church</option>
-            <option>Jentezen Franklin Media Ministries</option>
-            <option>Royal Change</option>
-            <option>Misc.</option>
-            <option>Shaw Industries</option>
-        </select>
+        <div class="filter-field">
+          <label for="client-filter">Filter by client</label>
+          <select id="client-filter">
+              <option value="">All projects</option>
+              <option>Sweeney &amp; Sons</option>
+              <option>BCA Studios</option>
+              <option>Joel Osteen Ministries and Lakewood Church</option>
+              <option>Jentezen Franklin Media Ministries</option>
+              <option>Royal Change</option>
+              <option>Misc.</option>
+              <option>Shaw Industries</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label for="project-sort">Sort by</label>
+          <select id="project-sort">
+            <option value="">Featured order</option>
+            <option value="newest">Newest start date</option>
+            <option value="oldest">Oldest start date</option>
+            <option value="client-az">Client A–Z</option>
+            <option value="client-za">Client Z–A</option>
+          </select>
+        </div>
         <span id="project-count" role="status"></span>
       </div>
       <div class="project-grid">
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08">
           <a href="/portfolio/front-end-web-developer-and-ui-ux-designer/" aria-label="View project: Jentezen Franklin Media Ministries — Front-End Web Development">
-            <div class="project-image"><img src="/assets/jfmm.png" alt="" loading="lazy"></div>
+            <div class="project-image project-image--jfmm"><img src="/assets/jfmm.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development</p>
               <h2>Jentezen Franklin Media Ministries</h2>
@@ -50,7 +62,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Joel Osteen Ministries and Lakewood Church">
+        <article class="project-card" data-client="Joel Osteen Ministries and Lakewood Church" data-start-date="2024-04">
           <a href="/portfolio/joel-osteen-ministries-and-lakewood-church/" aria-label="View project: Joel Osteen Ministries and Lakewood Church — Front-End Web Development">
             <div class="project-image"><img src="/assets/joel.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -60,7 +72,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Sweeney &amp; Sons">
+        <article class="project-card" data-client="Sweeney &amp; Sons" data-start-date="2024-05">
           <a href="/portfolio/streamline/" aria-label="View project: Sweeney &amp; Sons — User Interface Design">
             <div class="project-image"><img src="/assets/sweeney.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -70,9 +82,9 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="BCA Studios">
+        <article class="project-card" data-client="BCA Studios" data-start-date="2025-02">
           <a href="/portfolio/user-interace-design/" aria-label="View project: BCA Studios — Front-End Web Development &amp; User Interface Design">
-            <div class="project-image"><img src="/assets/bca-project.png" alt="" loading="lazy"></div>
+            <div class="project-image project-image--bca"><img src="/assets/bca-studios-logo.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development &amp; User Interface Design</p>
               <h2>BCA Studios</h2>
@@ -80,9 +92,9 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-10">
           <a href="/portfolio/ott-app/" aria-label="View project: Jentezen Franklin Media Ministries — OTT Application">
-            <div class="project-image"><img src="/assets/jftv.png" alt="" loading="lazy"></div>
+            <div class="project-image project-image--jftv"><img src="/assets/jftv-app-artwork.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>OTT Application</p>
               <h2>Jentezen Franklin Media Ministries</h2>
@@ -90,7 +102,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2024-01">
           <a href="/portfolio/broadcast-streaming/" aria-label="View project: Jentezen Franklin Media Ministries — Broadcast Live Stream Production">
             <div class="project-image"><img src="/assets/broadcast.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -100,7 +112,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Shaw Industries">
+        <article class="project-card" data-client="Shaw Industries" data-start-date="2021">
           <a href="/portfolio/realistic-powered-by-shaw-industries/" aria-label="View project: Shaw Industries — App Development">
             <div class="project-image"><img src="/assets/realistic.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -110,7 +122,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08">
           <a href="/portfolio/graphic-design/" aria-label="View project: Jentezen Franklin Media Ministries — Graphic Design">
             <div class="project-image"><img src="/assets/graphic-design.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -120,7 +132,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-07">
           <a href="/portfolio/emerging-media-capstone/" aria-label="View project: Royal Change — Front-End Web Development">
             <div class="project-image"><img src="/assets/royal-capstone.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -130,7 +142,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-12-05">
           <a href="/portfolio/ux-rp/" aria-label="View project: Royal Change — User Experience and Research Proposal">
             <div class="project-image"><img src="/assets/royal-research.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -140,7 +152,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-10-18">
           <a href="/portfolio/design-system/" aria-label="View project: Royal Change — User Interface Design">
             <div class="project-image"><img src="/assets/royal-design.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -150,7 +162,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-09-11">
           <a href="/portfolio/user-research/" aria-label="View project: Royal Change — User Research">
             <div class="project-image"><img src="/assets/royal-users.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -160,7 +172,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Misc.">
+        <article class="project-card" data-client="Misc." data-start-date="2022-07">
           <a href="/portfolio/sprint-project/" aria-label="View project: Misc. — User Interface Design">
             <div class="project-image"><img src="/assets/slack-scheduler.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
@@ -170,7 +182,7 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Misc.">
+        <article class="project-card" data-client="Misc." data-start-date="2022-05">
           <a href="/portfolio/ux-redesign-final-project/" aria-label="View project: Misc. — UX/UI Redesign">
             <div class="project-image"><img src="/assets/zara-redesign.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">

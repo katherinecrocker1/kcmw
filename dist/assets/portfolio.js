@@ -1,6 +1,15 @@
 const filter = document.querySelector('#client-filter');
-const cards = [...document.querySelectorAll('.project-card')];
+const sort = document.querySelector('#project-sort');
+const grid = document.querySelector('.project-grid');
+const cards = [...grid.querySelectorAll('.project-card')];
 const count = document.querySelector('#project-count');
+
+const sortOptions = {
+  newest: (a, b) => b.dataset.startDate.localeCompare(a.dataset.startDate),
+  oldest: (a, b) => a.dataset.startDate.localeCompare(b.dataset.startDate),
+  'client-az': (a, b) => a.dataset.client.localeCompare(b.dataset.client),
+  'client-za': (a, b) => b.dataset.client.localeCompare(a.dataset.client),
+};
 
 const legacyCategories = {
   'sweeney-and-sons': 'Sweeney & Sons',
@@ -19,6 +28,17 @@ if ([...filter.options].some(option => option.value === requestedClient)) {
   filter.value = requestedClient;
 }
 
+const requestedSort = params.get('sort');
+if (Object.hasOwn(sortOptions, requestedSort)) {
+  sort.value = requestedSort;
+}
+
+function sortProjects() {
+  const compare = sortOptions[sort.value];
+  const orderedCards = compare ? [...cards].sort(compare) : cards;
+  grid.append(...orderedCards);
+}
+
 function updateProjects() {
   let visible = 0;
 
@@ -30,15 +50,27 @@ function updateProjects() {
   count.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
 }
 
-filter.addEventListener('change', () => {
+function updateUrl() {
   const url = new URL(window.location.href);
   url.searchParams.delete('vp_filter');
   url.searchParams.delete('vp_page');
   if (filter.value) url.searchParams.set('client', filter.value);
   else url.searchParams.delete('client');
+  if (sort.value) url.searchParams.set('sort', sort.value);
+  else url.searchParams.delete('sort');
   window.history.replaceState(null, '', url);
+}
+
+filter.addEventListener('change', () => {
+  updateUrl();
   updateProjects();
 });
 
+sort.addEventListener('change', () => {
+  updateUrl();
+  sortProjects();
+});
+
+sortProjects();
 updateProjects();
 filter.closest('.filter').hidden = false;
