@@ -8,29 +8,42 @@ for (const comparison of document.querySelectorAll('.case-comparison')) {
 }
 
 for (const gallery of document.querySelectorAll('.case-gallery')) {
-  const slides = gallery.querySelector('.case-slides');
-  const controls = gallery.querySelector('.case-gallery-controls');
-  const more = controls.querySelector('.gallery-more');
-  const step = () => slides.firstElementChild.getBoundingClientRect().width + 16;
-  const scrollBehavior = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  const thumbnails = gallery.querySelector('.gallery-thumbnails');
+  const links = [...thumbnails.querySelectorAll('a')];
+  if (!links.length) continue;
 
-  controls.hidden = false;
-  controls.querySelector('.gallery-prev').addEventListener('click', () => {
-    slides.scrollBy({ left: -step(), behavior: scrollBehavior() });
+  const preview = document.createElement('a');
+  preview.className = 'gallery-preview';
+  const previewImage = document.createElement('img');
+  preview.append(previewImage);
+  const caption = document.createElement('p');
+  caption.className = 'gallery-caption';
+  caption.setAttribute('aria-live', 'polite');
+  thumbnails.before(preview, caption);
+
+  const buttons = links.map(link => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-label', link.dataset.galleryTitle);
+    const thumbnail = link.querySelector('img').cloneNode();
+    thumbnail.alt = '';
+    button.append(thumbnail);
+    link.replaceWith(button);
+    return button;
   });
-  controls.querySelector('.gallery-next').addEventListener('click', () => {
-    slides.scrollBy({ left: step(), behavior: scrollBehavior() });
-  });
-  if (more) {
-    more.hidden = false;
-    more.addEventListener('click', () => {
-      const next = slides.querySelector('figure[hidden]');
-      for (const slide of slides.querySelectorAll('figure[hidden]')) slide.hidden = false;
-      next.querySelector('a').focus({ preventScroll: true });
-      next.scrollIntoView({ block: 'nearest', inline: 'start' });
-      more.hidden = true;
-    });
+
+  function selectImage(index) {
+    const link = links[index];
+    preview.href = link.href;
+    preview.setAttribute('aria-label', `Enlarge ${link.dataset.galleryTitle}`);
+    previewImage.src = link.href;
+    previewImage.alt = link.querySelector('img').alt;
+    caption.textContent = link.dataset.galleryTitle;
+    buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
   }
+
+  buttons.forEach((button, index) => button.addEventListener('click', () => selectImage(index)));
+  selectImage(0);
 
   const dialog = document.createElement('dialog');
   dialog.className = 'case-lightbox';
@@ -44,12 +57,11 @@ for (const gallery of document.querySelectorAll('.case-gallery')) {
   gallery.append(dialog);
   close.addEventListener('click', () => dialog.close());
 
-  slides.addEventListener('click', event => {
-    const link = event.target.closest('a');
-    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  preview.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    image.src = link.href;
-    image.alt = link.querySelector('img').alt;
+    image.src = preview.href;
+    image.alt = previewImage.alt;
     dialog.showModal();
   });
 }

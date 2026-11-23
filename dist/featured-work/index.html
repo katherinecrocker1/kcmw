@@ -6,8 +6,8 @@
   <meta name="description" content="Selected design, web development, and media projects by Katherine Crocker.">
   <title>Featured Work | KC Media Works</title>
   <link rel="icon" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=featured-work-active-status">
-  <script src="/assets/portfolio.js?v=featured-work-sorting" defer></script>
+  <link rel="stylesheet" href="/assets/styles.css?v=featured-work-filter-panel">
+  <script src="/assets/portfolio.js?v=featured-work-client-label" defer></script>
 </head>
 <body class="portfolio featured-work">
   <a class="skip" href="#main">Skip to content</a>
@@ -25,35 +25,58 @@
       <div class="container"><h1>Featured <em>Work</em></h1></div>
     </section>
     <section class="container gallery-section" aria-label="Portfolio projects">
-      <div class="filter" hidden>
-        <div class="filter-field">
-          <label for="client-filter">Filter by client</label>
-          <select id="client-filter">
-              <option value="">All projects</option>
-              <option>Sweeney &amp; Sons</option>
-              <option>BCA Studios</option>
-              <option>Joel Osteen Ministries and Lakewood Church</option>
-              <option>Jentezen Franklin Media Ministries</option>
-              <option>Royal Change</option>
-              <option>Misc.</option>
-              <option>Shaw Industries</option>
-          </select>
+      <details class="filter-panel" open hidden>
+        <summary>
+          <span>Filters &amp; Sorting</span>
+          <span id="project-count" role="status"></span>
+        </summary>
+        <div class="filter">
+          <div class="filter-field filter-client">
+            <label for="client-filter">Client</label>
+            <select id="client-filter">
+                <option value="">All projects</option>
+                <option>Sweeney &amp; Sons</option>
+                <option>BCA Studios</option>
+                <option>Joel Osteen Ministries | Lakewood Church</option>
+                <option>Jentezen Franklin Media Ministries</option>
+                <option>Royal Change</option>
+                <option>Misc.</option>
+                <option>Shaw Industries</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="role-filter">Role</label>
+            <select id="role-filter">
+              <option value="">All roles</option>
+              <option value="project-management">Project Management</option>
+              <option value="front-end-development">Front-End Development</option>
+              <option value="ui-ux-design">UI/UX Design</option>
+              <option value="user-research">User Research</option>
+              <option value="graphic-design">Graphic Design</option>
+              <option value="live-stream-production">Live Stream Production</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="project-sort">Sort by</label>
+            <select id="project-sort">
+              <option value="">Featured order</option>
+              <option value="newest">Newest start date</option>
+              <option value="oldest">Oldest start date</option>
+              <option value="client-az">Client A–Z</option>
+              <option value="client-za">Client Z–A</option>
+            </select>
+          </div>
+          <div class="filter-status">
+            <label class="filter-active">
+              <input type="checkbox" id="active-only">
+              Active only
+            </label>
+          </div>
         </div>
-        <div class="filter-field">
-          <label for="project-sort">Sort by</label>
-          <select id="project-sort">
-            <option value="">Featured order</option>
-            <option value="newest">Newest start date</option>
-            <option value="oldest">Oldest start date</option>
-            <option value="client-az">Client A–Z</option>
-            <option value="client-za">Client Z–A</option>
-          </select>
-        </div>
-        <span id="project-count" role="status"></span>
-      </div>
+      </details>
       <div class="project-grid">
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08">
-          <a href="/portfolio/front-end-web-developer-and-ui-ux-designer/" aria-label="View project: Jentezen Franklin Media Ministries — Front-End Web Development (Active)">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08" data-roles="front-end-development ui-ux-design">
+          <a href="/portfolio/jentezen-franklin-media-ministries/website/" aria-label="View project: Jentezen Franklin Media Ministries — Front-End Web Development (Active)">
             <div class="project-image project-image--jfmm"><img src="/assets/jfmm.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development</p>
@@ -62,18 +85,18 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Joel Osteen Ministries and Lakewood Church" data-start-date="2024-04">
-          <a href="/portfolio/joel-osteen-ministries-and-lakewood-church/" aria-label="View project: Joel Osteen Ministries and Lakewood Church — Front-End Web Development">
+        <article class="project-card" data-client="Joel Osteen Ministries | Lakewood Church" data-start-date="2024-04" data-roles="front-end-development">
+          <a href="/portfolio/joel-osteen-ministries-and-lakewood-church/" aria-label="View project: Joel Osteen Ministries | Lakewood Church — Front-End Web Development">
             <div class="project-image"><img src="/assets/joel.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development</p>
-              <h2>Joel Osteen Ministries and Lakewood Church</h2>
+              <h2>Joel Osteen Ministries | Lakewood Church</h2>
               <div class="project-card-action"><span class="project-button">View Project</span></div>
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Sweeney &amp; Sons" data-start-date="2024-05">
-          <a href="/portfolio/streamline/" aria-label="View project: Sweeney &amp; Sons — User Interface Design">
+        <article class="project-card" data-client="Sweeney &amp; Sons" data-start-date="2024-05" data-roles="front-end-development">
+          <a href="/portfolio/sweeney-and-sons/" aria-label="View project: Sweeney &amp; Sons — User Interface Design">
             <div class="project-image"><img src="/assets/sweeney.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>User Interface Design</p>
@@ -82,8 +105,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="BCA Studios" data-start-date="2025-02">
-          <a href="/portfolio/user-interace-design/" aria-label="View project: BCA Studios — Front-End Web Development &amp; User Interface Design (Active)">
+        <article class="project-card" data-client="BCA Studios" data-start-date="2025-02" data-roles="front-end-development ui-ux-design">
+          <a href="/portfolio/bca-studios/" aria-label="View project: BCA Studios — Front-End Web Development &amp; User Interface Design (Active)">
             <div class="project-image project-image--bca"><img src="/assets/bca-studios-logo.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development &amp; User Interface Design</p>
@@ -92,8 +115,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-10">
-          <a href="/portfolio/ott-app/" aria-label="View project: Jentezen Franklin Media Ministries — OTT Application (Active)">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-10" data-roles="project-management ui-ux-design">
+          <a href="/portfolio/jentezen-franklin-media-ministries/jentezen-franklin-tv/" aria-label="View project: Jentezen Franklin Media Ministries — OTT Application (Active)">
             <div class="project-image project-image--jftv"><img src="/assets/jftv-app-artwork.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>OTT Application</p>
@@ -102,8 +125,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2024-01">
-          <a href="/portfolio/broadcast-streaming/" aria-label="View project: Jentezen Franklin Media Ministries — Broadcast Live Stream Production">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2024-01" data-roles="live-stream-production">
+          <a href="/portfolio/jentezen-franklin-media-ministries/broadcast-streaming/" aria-label="View project: Jentezen Franklin Media Ministries — Broadcast Live Stream Production">
             <div class="project-image"><img src="/assets/broadcast.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Broadcast Live Stream Production</p>
@@ -112,8 +135,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Shaw Industries" data-start-date="2021">
-          <a href="/portfolio/realistic-powered-by-shaw-industries/" aria-label="View project: Shaw Industries — App Development">
+        <article class="project-card" data-client="Shaw Industries" data-start-date="2021" data-roles="project-management">
+          <a href="/portfolio/shaw-industries/" aria-label="View project: Shaw Industries — App Development">
             <div class="project-image"><img src="/assets/realistic.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>App Development</p>
@@ -122,8 +145,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08">
-          <a href="/portfolio/graphic-design/" aria-label="View project: Jentezen Franklin Media Ministries — Graphic Design (Active)">
+        <article class="project-card" data-client="Jentezen Franklin Media Ministries" data-start-date="2023-08" data-roles="graphic-design">
+          <a href="/portfolio/jentezen-franklin-media-ministries/graphic-design/" aria-label="View project: Jentezen Franklin Media Ministries — Graphic Design (Active)">
             <div class="project-image"><img src="/assets/graphic-design.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Graphic Design</p>
@@ -132,8 +155,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change" data-start-date="2022-07">
-          <a href="/portfolio/emerging-media-capstone/" aria-label="View project: Royal Change — Front-End Web Development">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-07" data-roles="front-end-development ui-ux-design user-research graphic-design">
+          <a href="/portfolio/royal-change/website-redesign/" aria-label="View project: Royal Change — Front-End Web Development">
             <div class="project-image"><img src="/assets/royal-capstone.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>Front-End Web Development</p>
@@ -142,8 +165,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change" data-start-date="2022-12-05">
-          <a href="/portfolio/ux-rp/" aria-label="View project: Royal Change — User Experience and Research Proposal">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-12-05" data-roles="user-research">
+          <a href="/portfolio/royal-change/research-proposal/" aria-label="View project: Royal Change — User Experience and Research Proposal">
             <div class="project-image"><img src="/assets/royal-research.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>User Experience and Research Proposal</p>
@@ -152,8 +175,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change" data-start-date="2022-10-18">
-          <a href="/portfolio/design-system/" aria-label="View project: Royal Change — User Interface Design">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-10-18" data-roles="ui-ux-design">
+          <a href="/portfolio/royal-change/design-system/" aria-label="View project: Royal Change — User Interface Design">
             <div class="project-image"><img src="/assets/royal-design.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>User Interface Design</p>
@@ -162,8 +185,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Royal Change" data-start-date="2022-09-11">
-          <a href="/portfolio/user-research/" aria-label="View project: Royal Change — User Research">
+        <article class="project-card" data-client="Royal Change" data-start-date="2022-09-11" data-roles="user-research">
+          <a href="/portfolio/royal-change/user-research/" aria-label="View project: Royal Change — User Research">
             <div class="project-image"><img src="/assets/royal-users.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>User Research</p>
@@ -172,8 +195,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Misc." data-start-date="2022-07">
-          <a href="/portfolio/sprint-project/" aria-label="View project: Misc. — User Interface Design">
+        <article class="project-card" data-client="Misc." data-start-date="2022-07" data-roles="ui-ux-design">
+          <a href="/portfolio/slack-scheduler/" aria-label="View project: Misc. — User Interface Design">
             <div class="project-image"><img src="/assets/slack-scheduler.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>User Interface Design</p>
@@ -182,8 +205,8 @@
             </div>
           </a>
         </article>
-        <article class="project-card" data-client="Misc." data-start-date="2022-05">
-          <a href="/portfolio/ux-redesign-final-project/" aria-label="View project: Misc. — UX/UI Redesign">
+        <article class="project-card" data-client="Misc." data-start-date="2022-05" data-roles="ui-ux-design">
+          <a href="/portfolio/zara-redesign/" aria-label="View project: Misc. — UX/UI Redesign">
             <div class="project-image"><img src="/assets/zara-redesign.png" alt="" loading="lazy"></div>
             <div class="project-card-copy">
               <p>UX/UI Redesign</p>
@@ -193,6 +216,7 @@
           </a>
         </article>
       </div>
+      <p id="project-empty" hidden>No projects match these filters.</p>
       <p class="gallery-updated">Updated <time datetime="2025-08">August 2025</time></p>
     </section>
     <section class="contact" id="contact" aria-labelledby="contact-title">

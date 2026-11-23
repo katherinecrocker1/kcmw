@@ -7,7 +7,7 @@ Katherine Crocker’s KC Media Works portfolio is a static website. Open this fo
 | Home | `dist/index.html` |
 | Featured Work | `dist/featured-work/index.html` |
 | About section | `dist/index.html` |
-| Project summaries | `dist/portfolio/<project>/index.html` |
+| Project summaries | `dist/portfolio/<client>/index.html` or `dist/portfolio/<client>/<project>/index.html`. Independent projects use their project name. |
 | Site styles | `dist/assets/styles.css` |
 | Portfolio filter | `dist/assets/portfolio.js` |
 

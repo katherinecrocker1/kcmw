@@ -1,8 +1,11 @@
 const filter = document.querySelector('#client-filter');
+const role = document.querySelector('#role-filter');
 const sort = document.querySelector('#project-sort');
+const activeOnly = document.querySelector('#active-only');
 const grid = document.querySelector('.project-grid');
 const cards = [...grid.querySelectorAll('.project-card')];
 const count = document.querySelector('#project-count');
+const empty = document.querySelector('#project-empty');
 
 const sortOptions = {
   newest: (a, b) => b.dataset.startDate.localeCompare(a.dataset.startDate),
@@ -13,7 +16,7 @@ const sortOptions = {
 
 const legacyCategories = {
   'sweeney-and-sons': 'Sweeney & Sons',
-  'joel-osteen-ministries-and-lakewood-church': 'Joel Osteen Ministries and Lakewood Church',
+  'joel-osteen-ministries-and-lakewood-church': 'Joel Osteen Ministries | Lakewood Church',
   'jentezen-franklin-media-ministries': 'Jentezen Franklin Media Ministries',
   'royal-change': 'Royal Change',
   'misc': 'Misc.',
@@ -22,11 +25,19 @@ const legacyCategories = {
 
 const params = new URLSearchParams(window.location.search);
 const legacyCategory = params.get('vp_filter')?.replace(/^portfolio_category:/, '');
-const requestedClient = params.get('client') || legacyCategories[legacyCategory];
+const requestedClient = params.get('client')?.replace(' and Lakewood Church', ' | Lakewood Church')
+  || legacyCategories[legacyCategory];
 
 if ([...filter.options].some(option => option.value === requestedClient)) {
   filter.value = requestedClient;
 }
+
+const requestedRole = params.get('role');
+if ([...role.options].some(option => option.value === requestedRole)) {
+  role.value = requestedRole;
+}
+
+activeOnly.checked = params.get('active') === '1';
 
 const requestedSort = params.get('sort');
 if (Object.hasOwn(sortOptions, requestedSort)) {
@@ -43,10 +54,14 @@ function updateProjects() {
   let visible = 0;
 
   for (const card of cards) {
-    card.hidden = Boolean(filter.value && card.dataset.client !== filter.value);
+    const matchesClient = !filter.value || card.dataset.client === filter.value;
+    const matchesStatus = !activeOnly.checked || card.querySelector('.project-status');
+    const matchesRole = !role.value || card.dataset.roles.split(' ').includes(role.value);
+    card.hidden = !matchesClient || !matchesStatus || !matchesRole;
     if (!card.hidden) visible += 1;
   }
 
+  empty.hidden = visible !== 0;
   count.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
 }
 
@@ -56,15 +71,23 @@ function updateUrl() {
   url.searchParams.delete('vp_page');
   if (filter.value) url.searchParams.set('client', filter.value);
   else url.searchParams.delete('client');
+  if (role.value) url.searchParams.set('role', role.value);
+  else url.searchParams.delete('role');
   if (sort.value) url.searchParams.set('sort', sort.value);
   else url.searchParams.delete('sort');
+  if (activeOnly.checked) url.searchParams.set('active', '1');
+  else url.searchParams.delete('active');
   window.history.replaceState(null, '', url);
 }
 
-filter.addEventListener('change', () => {
+function filterProjects() {
   updateUrl();
   updateProjects();
-});
+}
+
+filter.addEventListener('change', filterProjects);
+role.addEventListener('change', filterProjects);
+activeOnly.addEventListener('change', filterProjects);
 
 sort.addEventListener('change', () => {
   updateUrl();
@@ -73,4 +96,4 @@ sort.addEventListener('change', () => {
 
 sortProjects();
 updateProjects();
-filter.closest('.filter').hidden = false;
+filter.closest('.filter-panel').hidden = false;
